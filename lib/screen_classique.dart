@@ -2,14 +2,14 @@ import 'package:fixed_draw/model/matchModel.dart';
 import 'package:fixed_draw/service/service.dart';
 import 'package:flutter/material.dart';
 
-class ScreenVip extends StatefulWidget {
-  const ScreenVip({Key? key}) : super(key: key);
+class ScreenClassique extends StatefulWidget {
+  const ScreenClassique({Key? key}) : super(key: key);
 
   @override
-  State<ScreenVip> createState() => _ScreenVipState();
+  State<ScreenClassique> createState() => _ScreenClassiqueState();
 }
 
-class _ScreenVipState extends State<ScreenVip> {
+class _ScreenClassiqueState extends State<ScreenClassique> {
   List<MatchModel> matchModel = [];
   getData() async {
     var data = await Service.getMatchVip();
@@ -34,7 +34,7 @@ class _ScreenVipState extends State<ScreenVip> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('VIP'),
+        title: const Text('Match Classiques'),
         actions: [IconButton(onPressed: getData, icon: const Icon(Icons.refresh))],
       ),
       backgroundColor: Colors.green[100],
@@ -44,7 +44,7 @@ class _ScreenVipState extends State<ScreenVip> {
           Container(
               margin: const EdgeInsets.all(15.0),
               child: textAvecStyle(
-                  "Bienvenu dans l'espace VIP\nLes scores exacts de certains matchs serons communiqué dans cet espce avec une precision de 100% et tous les jours.\nBon gain à toi.",
+                  "Retrouvez ici les scores des matchs établis par nos puissants algorithmes de predictions.\nPour avoir des scores precis à 100%, allez sur la rubrique “Espace VIP”. ",
                   textAlign: TextAlign.left)),
           Container(
             margin: const EdgeInsets.only(left: 15.0, right: 15.0),
@@ -76,8 +76,10 @@ class _ScreenVipState extends State<ScreenVip> {
                     children: [
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 3,
-                        child: textAvecStyle(match.domicile.toUpperCase(),
-                            maxLine: 2),
+                        child: textAvecStyle(
+                          match.domicile.toUpperCase(),
+                          maxLine :2
+                        ),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 6,
@@ -88,8 +90,10 @@ class _ScreenVipState extends State<ScreenVip> {
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 3,
-                        child: textAvecStyle(match.exterieur.toUpperCase(),
-                            maxLine: 2),
+                        child: textAvecStyle(
+                          match.exterieur.toUpperCase(),
+                          maxLine :2
+                        ),
                       )
                     ],
                   )),
@@ -111,8 +115,8 @@ class _ScreenVipState extends State<ScreenVip> {
     return Text(
       data,
       textAlign: textAlign,
-      maxLines: maxLine,
       overflow: TextOverflow.ellipsis,
+      maxLines: maxLine,
       style:
           TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight),
     );

@@ -1,5 +1,5 @@
 import 'package:fixed_draw/login.dart';
-import 'package:fixed_draw/match_classique.dart';
+import 'package:fixed_draw/screen_classique.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,59 +72,63 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body:  Center(
-         child: SingleChildScrollView(
-           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(onPressed: getMatchClassique, 
-                child: textAvecStyle('Résultats classiques', fontSize: 18.0,color: Colors.white, fontWeight: FontWeight.bold),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(300, 80),
-                  elevation: 5.0
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: getMatchClassique,
+                  child: textAvecStyle('Résultats classiques',
+                      fontSize: 18.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(300, 80), elevation: 5.0),
                 ),
-              ),
-              const Padding(padding: EdgeInsets.all(13.0)),
-              ElevatedButton(onPressed: getMatchVip, 
-                child: textAvecStyle('Espace VIP', fontSize: 18.0,color: Colors.white, fontWeight: FontWeight.bold),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(300, 80),
-                  elevation: 5.0
+                const Padding(padding: EdgeInsets.all(13.0)),
+                ElevatedButton(
+                  onPressed: getMatchVip,
+                  child: textAvecStyle('Espace VIP',
+                      fontSize: 18.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(300, 80), elevation: 5.0),
                 ),
-              ),
-              const Padding(padding: EdgeInsets.all(13.0)),
-              ElevatedButton(onPressed: (){}, 
-                child: textAvecStyle('Acceder à la chaine télégram', fontSize: 18.0,color: Colors.white, fontWeight: FontWeight.bold),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(300, 80),
-                  elevation: 5.0
+                const Padding(padding: EdgeInsets.all(13.0)),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: textAvecStyle('Acceder à la chaine télégram',
+                      fontSize: 18.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(300, 80), elevation: 5.0),
                 ),
-              ),
-            ]
-          ),
-         ),
+              ]),
         ),
-
-    );
-  }
-  Text textAvecStyle(String data,{color =Colors.black, fontSize =15.0,fontWeight = FontWeight.normal}){
-    return Text(
-      data,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight
       ),
     );
   }
-  void getMatchClassique(){
+
+  Text textAvecStyle(String data,
+      {color = Colors.black, fontSize = 15.0, fontWeight = FontWeight.normal}) {
+    return Text(
+      data,
+      textAlign: TextAlign.center,
+      style:
+          TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight),
+    );
+  }
+
+  void getMatchClassique() {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return const MatchClassique(title: 'Match Classique',);
+      return const ScreenClassique();
     }));
   }
 
-   void getMatchVip(){
+  void getMatchVip() {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       return const Login();
     }));
